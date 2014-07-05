@@ -1,0 +1,28 @@
+set nocompatible
+
+if has('gui_running')
+  set guifont=DejaVu\ Sans\ Mono\ 7
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=L
+  set background=dark
+  colorscheme solarized
+endif
+
+syntax enable
+
+" show tab and end of line characters
+set list
+
+" show line numbers
+set number
+
+" set tabs to 4 spaces
+set tabstop=4 shiftwidth=4 expandtab
+
+set textwidth=80
+
+filetype plugin indent on
+
+autocmd vimenter * if !argc() | NERDTree | endif
