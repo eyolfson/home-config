@@ -1,0 +1,10 @@
+ZSH=/usr/share/oh-my-zsh
+ZSH_THEME="lukerandall"
+DISABLE_AUTO_UPDATE="true"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+export PATH=$HOME/bin:$PATH
+
+envoy -t gpg-agent
+source <(envoy -p)
