@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+
+GIT_DIR = os.path.join(os.environ['HOME'], 'git')
+REPO_TUPLES = [
+    ('home-config', True, ''),
+    ('wayland', True, 'git://anongit.freedesktop.org/wayland/wayland'),
+    ('weston', True, 'git://anongit.freedesktop.org/wayland/weston'),
+]
+
+def origin_url(repo_name):
+    return 'git@eyl.io:jon/{}'.format(repo_name)
+
+def ecegit_url(repo_name):
+    return 'git@ecegit.uwaterloo.ca:jeyolfso/{}'.format(repo_name)
+
+def github_url(repo_name):
+    return 'git@github.com:eyolfson/{}'.format(repo_name)
+
+for repo_name, repo_on_github, upstream_url in REPO_TUPLES:
+    repo_dir = os.path.join(GIT_DIR, repo_name)
+    if not os.path.isdir(repo_dir):
+        subprocess.check_call(
+            ['git', 'clone', origin_url(repo_name)],
+            cwd=GIT_DIR
+        )
+    lines = subprocess.check_output(
+        ['git', 'remote'],
+        cwd=repo_dir,
+        universal_newlines=True
+    ).splitlines()
+    remotes = set()
+    for line in lines:
+        remotes.add(line)
+    if upstream_url != '' and 'upstream' not in remotes:
+        print(repo_name, 'Adding upstream remote')
+        subprocess.check_call(
+            ['git', 'remote', 'add', 'upstream', upstream_url],
+            cwd=repo_dir
+        )
