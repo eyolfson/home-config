@@ -12,7 +12,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+i exec firefox
 bindsym $mod+u exec evince
 bindsym $mod+y exec chromium
-bindsym $mod+t exec gvim
+bindsym $mod+t exec emacsclient -c
 bindsym $mod+o exec i3lock
 
 bindsym $mod+Shift+q kill
