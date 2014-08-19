@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+
+import os
+
+BASE_DIR = os.path.dirname(__file__)
+
+for root, dirs, filenames in os.walk(BASE_DIR):
+    if root == BASE_DIR:
+        if '.git' in dirs:
+            dirs.remove('.git')
+    else:
+        for filename in filenames:
+            path = os.path.join(root, filename)
+            abspath = os.path.abspath(path)
+            relpath = os.path.relpath(path, BASE_DIR)
+            relpath_split = relpath.split(os.sep)
+            package = relpath_split[0]
+            # Ignore the fist entry in the relpath relpath_split (package name)
+            for i in range(2, len(relpath_split) + 1):
+                relpath_current = relpath_split[:i]
+                git_path = os.path.join(BASE_DIR, *relpath_current)
+                git_abspath = os.path.abspath(git_path)
+                home_abspath = os.path.join(
+                    os.environ['HOME'],
+                    '.{}'.format(relpath_current[1]),
+                    *relpath_current[2:]
+                )
+                if os.path.isfile(git_abspath):
+                    try:
+                        systemd_dirs = ['config', 'systemd', 'user'] 
+                        if relpath_current[1:4] == systemd_dirs:
+                            os.link(git_abspath, home_abspath)
+                        else:
+                            os.symlink(git_abspath, home_abspath)
+                    except FileExistsError:
+                        pass
+                    if not os.path.samefile(git_abspath, home_abspath):
+                        warning_differs = '\x1b[33mWarning: {} differs\x1b[m'
+                        print(warning_differs.format(home_abspath))
+                elif os.path.isdir(git_abspath):
+                    try:
+                        os.mkdir(home_abspath)
+                    except FileExistsError:
+                        pass
+                    if not os.path.isdir(home_abspath):
+                        m = '{} is not a directory'.format(home_abspath)
+                        raise Exception(m)
