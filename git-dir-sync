@@ -3,7 +3,8 @@
 import os
 import subprocess
 
-GIT_DIR = os.path.join(os.environ['HOME'], 'git')
+HOME_DIR = os.environ['HOME']
+GIT_DIR = os.path.join(HOME_DIR, 'git')
 REPO_TUPLES = [
     ('aur', True, ''),
     ('django-gitolite', True, ''),
@@ -62,3 +63,13 @@ for repo_name, repo_on_github, upstream_url in REPO_TUPLES:
             ['git', 'remote', 'add', 'upstream', upstream_url],
             cwd=repo_dir
         )
+
+try:
+    git_abspath = os.path.join(GIT_DIR, 'home-password-store')
+    home_abspath = os.path.join(HOME_DIR, '.password-store')
+    os.symlink(git_abspath, home_abspath)
+except FileExistsError:
+    pass
+if not os.path.samefile(git_abspath, home_abspath):
+    warning_differs = '\x1b[33mWarning: {} differs\x1b[m'
+    print(warning_differs.format(home_abspath))
