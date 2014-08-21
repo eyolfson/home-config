@@ -1,10 +1,12 @@
 ZSH=/usr/share/oh-my-zsh
 ZSH_THEME="lukerandall"
 DISABLE_AUTO_UPDATE="true"
-plugins=(git)
+
+plugins=(archlinux git tmux)
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/bin:$PATH
+export EDITOR="emacsclient -t"
+export PATH="~/bin:${PATH}"
 
 envoy -t gpg-agent
 source <(envoy -p)
