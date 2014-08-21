@@ -34,6 +34,18 @@ for repo_name, repo_on_github, upstream_url in REPO_TUPLES:
     remotes = set()
     for line in lines:
         remotes.add(line)
+    if 'ecegit' not in remotes:
+        print(repo_name, 'Adding ecegit remote')
+        subprocess.check_call(
+            ['git', 'remote', 'add', 'ecegit', ecegit_url(repo_name)],
+            cwd=repo_dir
+        )
+    if repo_on_github and 'github' not in remotes:
+        print(repo_name, 'Adding github remote')
+        subprocess.check_call(
+            ['git', 'remote', 'add', 'github', github_url(repo_name)],
+            cwd=repo_dir
+        )
     if upstream_url != '' and 'upstream' not in remotes:
         print(repo_name, 'Adding upstream remote')
         subprocess.check_call(
