@@ -5,7 +5,17 @@ import subprocess
 
 GIT_DIR = os.path.join(os.environ['HOME'], 'git')
 REPO_TUPLES = [
+    ('aur', True, ''),
+    ('django-gitolite', True, ''),
+    ('django-ssh', True, ''),
+    ('eyl-shell', True, ''),
     ('home-config', True, ''),
+    ('home-data', True, ''),
+    ('home-password-store', False, ''),
+    ('site-ecegit', True, ''),
+    ('site-eyl', True, ''),
+    ('site-eyl-blog', True, ''),
+    ('site-eyolfson', True, ''),
     ('wayland', True, 'git://anongit.freedesktop.org/wayland/wayland'),
     ('weston', True, 'git://anongit.freedesktop.org/wayland/weston'),
 ]
