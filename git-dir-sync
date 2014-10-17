@@ -6,12 +6,14 @@ import subprocess
 HOME_DIR = os.environ['HOME']
 GIT_DIR = os.path.join(HOME_DIR, 'git')
 REPO_TUPLES = [
+    ('android-spillage', False, ''),
     ('aur', True, ''),
     ('django-gitolite', True, ''),
     ('django-ssh', True, ''),
     ('eyl-shell', True, ''),
     ('home-config', True, ''),
-    ('home-data', True, ''),
+    ('home-data', False, ''),
+    ('home-journal', False, ''),
     ('home-password-store', False, ''),
     ('site-ecegit', True, ''),
     ('site-eyl', True, ''),
