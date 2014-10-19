@@ -1,6 +1,8 @@
 (setq make-backup-files nil)
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-7"))
 
+(setq-default c-basic-offset 4)
+
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
