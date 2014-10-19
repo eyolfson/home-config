@@ -1,4 +1,4 @@
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 10
 
 set $up k
 set $down j

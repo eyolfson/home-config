@@ -1,5 +1,5 @@
 (setq make-backup-files nil)
-(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-8"))
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 
 (setq-default c-basic-offset 4)
 

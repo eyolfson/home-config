@@ -1,6 +1,6 @@
 [profiles]
   [[default]]
     use_system_font = False
-    font = "DejaVu Sans Mono 8"
+    font = "DejaVu Sans Mono 10"
     scrollbar_position = "disabled"
     show_titlebar = False
