@@ -11,6 +11,7 @@ REPO_TUPLES = [
     ('clang', True, 'http://llvm.org/git/clang.git'),
     ('django-gitolite', True, ''),
     ('django-ssh', True, ''),
+    ('eyl-clang-analysis', False, ''),
     ('eyl-shell', True, ''),
     ('home-config', True, ''),
     ('home-data', False, ''),
