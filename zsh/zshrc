@@ -2,7 +2,7 @@ ZSH=/usr/share/oh-my-zsh
 ZSH_THEME="lukerandall"
 DISABLE_AUTO_UPDATE="true"
 
-ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_AUTOSTART="false"
 
 plugins=(archlinux git tmux)
 source $ZSH/oh-my-zsh.sh
