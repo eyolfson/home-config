@@ -2,11 +2,14 @@
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 
 (setq-default c-basic-offset 4)
+(setq-default indent-tabs-mode nil)
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (column-number-mode 1)
+
+(require 'uniquify)
 
 (setq evil-default-cursor t
       evil-want-C-i-jump t
