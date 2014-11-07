@@ -22,6 +22,7 @@ REPO_TUPLES = [
     ('site-eyl', True, ''),
     ('site-eyl-blog', True, ''),
     ('site-eyolfson', True, ''),
+    ('rust-wayland', True, ''),
     ('wayland', True, 'git://anongit.freedesktop.org/wayland/wayland'),
     ('weston', True, 'git://anongit.freedesktop.org/wayland/weston'),
 ]
