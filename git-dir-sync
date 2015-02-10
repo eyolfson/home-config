@@ -15,6 +15,7 @@ REPO_TUPLES = [
     ('django-ssh', True, ''),
     ('eyl-clang-analysis', False, ''),
     ('eyl-shell', True, ''),
+    ('fish-shell', True, 'https://github.com/fish-shell/fish-shell.git'),
     ('home-config', True, ''),
     ('home-data', False, ''),
     ('home-journal', False, ''),
