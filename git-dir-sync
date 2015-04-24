@@ -25,6 +25,7 @@ REPO_TUPLES = [
     ('home-password-store', False, ''),
     ('linux', True, 'git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git'),
     ('llvm', True, 'http://llvm.org/git/llvm.git'),
+    ('rust', True, 'https://github.com/rust-lang/rust.git'),
     ('rust-wayland', True, ''),
     ('site-ecegit', True, ''),
     ('site-eyl', True, ''),
