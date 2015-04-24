@@ -4,27 +4,36 @@ import os
 import subprocess
 
 HOME_DIR = os.environ['HOME']
-GIT_DIR = os.path.join(HOME_DIR, 'git')
+GIT_DIR = os.path.join(HOME_DIR, 'srv', 'git')
 REPO_TUPLES = [
     ('android-spillage', False, ''),
+    ('assembler', True, ''),
     ('aur', True, ''),
+    ('build', True, ''),
     ('clang', True, 'http://llvm.org/git/clang.git'),
     ('cmpl', True, ''),
     ('cnfggr', True, ''),
     ('django-gitolite', True, ''),
     ('django-ssh', True, ''),
     ('eyl-clang-analysis', False, ''),
+    ('eyl-const-usage', False, ''),
     ('eyl-shell', True, ''),
+    ('eyl-software', True, ''),
     ('home-config', True, ''),
     ('home-data', False, ''),
     ('home-journal', False, ''),
     ('home-password-store', False, ''),
     ('llvm', True, 'http://llvm.org/git/llvm.git'),
+    ('rust-wayland', True, ''),
     ('site-ecegit', True, ''),
     ('site-eyl', True, ''),
     ('site-eyl-blog', True, ''),
     ('site-eyolfson', True, ''),
-    ('rust-wayland', True, ''),
+    ('student-uwaterloo-cs642-1151', False, ''),
+    ('teach-ece459-1141-a3', False, ''),
+    ('teach-ece459-1141-media', False, ''),
+    ('teach-ece459-1151-media', False, ''),
+    ('teach-ece459-1151-media', False, ''),
     ('wayland', True, 'git://anongit.freedesktop.org/wayland/wayland'),
     ('weston', True, 'git://anongit.freedesktop.org/wayland/weston'),
 ]
@@ -32,8 +41,8 @@ REPO_TUPLES = [
 def origin_url(repo_name):
     return 'git@eyl.io:jon/{}'.format(repo_name)
 
-def ecegit_url(repo_name):
-    return 'git@ecegit.uwaterloo.ca:jeyolfso/{}'.format(repo_name)
+def ecgit_url(repo_name):
+    return 'git@ecgit.uwaterloo.ca:jeyolfso/{}'.format(repo_name)
 
 def github_url(repo_name):
     return 'git@github.com:eyolfson/{}'.format(repo_name)
@@ -53,10 +62,10 @@ for repo_name, repo_on_github, upstream_url in REPO_TUPLES:
     remotes = set()
     for line in lines:
         remotes.add(line)
-    if 'ecegit' not in remotes:
-        print(repo_name, 'Adding ecegit remote')
+    if 'ecgit' not in remotes:
+        print(repo_name, 'Adding ecgit remote')
         subprocess.check_call(
-            ['git', 'remote', 'add', 'ecegit', ecegit_url(repo_name)],
+            ['git', 'remote', 'add', 'ecgit', ecgit_url(repo_name)],
             cwd=repo_dir
         )
     if repo_on_github and 'github' not in remotes:
