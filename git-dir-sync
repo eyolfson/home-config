@@ -7,7 +7,6 @@ HOME_DIR = os.environ['HOME']
 GIT_DIR = os.path.join(HOME_DIR, 'srv', 'git')
 REPO_TUPLES = [
     ('android-spillage', False, ''),
-    ('assembler', True, ''),
     ('aur', True, ''),
     ('build', True, ''),
     ('clang', True, 'http://llvm.org/git/clang.git'),
@@ -17,6 +16,7 @@ REPO_TUPLES = [
     ('django-ssh', True, ''),
     ('eyl-clang-analysis', False, ''),
     ('eyl-const-usage', False, ''),
+    ('eyl-lang', True, ''),
     ('eyl-shell', True, ''),
     ('eyl-software', True, ''),
     ('home-config', True, ''),
